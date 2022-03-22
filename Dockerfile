@@ -13,7 +13,7 @@ RUN cd /src && \
 FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 ##LABELS
-
+ARG TARGETARCH
 RUN microdnf update && microdnf clean all && rm -rf /var/cache/yum/*
 
 COPY --from=build-env /src/BUILD_INFO /src/BUILD_INFO
