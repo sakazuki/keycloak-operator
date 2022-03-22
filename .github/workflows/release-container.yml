@@ -22,7 +22,7 @@
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: quay.io/keycloak/keycloak-operator
+          images: sakazuki/keycloak-operator
           flavor: |
             latest=false
           tags: |
