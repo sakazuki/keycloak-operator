@@ -1,9 +1,11 @@
-FROM registry.ci.openshift.org/openshift/release:golang-1.13 AS build-env
+FROM --platform=$BUILDPLATFORM golang:1.17 as build-env
+ARG TARGETARCH
+# FROM registry.ci.openshift.org/openshift/release:golang-1.13 AS build-env
 
 COPY . /src/
 
 RUN cd /src && \
-    make code/compile && \
+    GOOS=linux GOARCH=$TARGETARCH make code/compile && \
     echo "Build SHA1: $(git rev-parse HEAD)" && \
     echo "$(git rev-parse HEAD)" > /src/BUILD_INFO
 
