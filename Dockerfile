@@ -10,7 +10,7 @@ RUN cd /src && \
     echo "$(git rev-parse HEAD)" > /src/BUILD_INFO
 
 # final stage
-FROM redhat/ubi8-minimal:latest
+FROM redhat/ubi8-minimal:latest@sha256:9bf78e321fd7fe46075971a83c6f92e48cbc35b546bf9af72b865fc45673d562
 
 ##LABELS
 ARG TARGETARCH
