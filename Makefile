@@ -5,6 +5,8 @@ PKG=github.com/keycloak/keycloak-operator
 OPERATOR_SDK_VERSION=v0.18.2
 ifeq ($(shell uname),Darwin)
   OPERATOR_SDK_ARCHITECTURE=x86_64-apple-darwin
+else ifeq ($(shell uname -m),aarch64)
+  OPERATOR_SDK_ARCHITECTURE=aarch64-linux-gnu
 else
   OPERATOR_SDK_ARCHITECTURE=x86_64-linux-gnu
 endif
