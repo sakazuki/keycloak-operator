@@ -9,7 +9,7 @@
 
   jobs:
     publish:
-      if: github.repository == 'keycloak/keycloak-operator'
+      if: github.repository == 'sakazuki/keycloak-operator'
       runs-on: ubuntu-latest
       steps:
       - name: Checkout
