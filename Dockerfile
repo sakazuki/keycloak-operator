@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.17 as build-env
+FROM golang:1.17 as build-env
 ARG TARGETARCH
 # FROM registry.ci.openshift.org/openshift/release:golang-1.13 AS build-env
 
@@ -10,7 +10,7 @@ RUN cd /src && \
     echo "$(git rev-parse HEAD)" > /src/BUILD_INFO
 
 # final stage
-FROM redhat/ubi8-minimal:latest@sha256:9bf78e321fd7fe46075971a83c6f92e48cbc35b546bf9af72b865fc45673d562
+FROM redhat/ubi8-minimal:latest@sha256:574f201d7ed185a9932c91cef5d397f5298dff9df08bc2ebb266c6d1e6284cd1
 
 ##LABELS
 ARG TARGETARCH
