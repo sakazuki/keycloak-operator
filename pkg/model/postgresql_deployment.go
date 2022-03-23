@@ -81,7 +81,7 @@ func PostgresqlDeployment(cr *v1alpha1.Keycloak, isOpenshift bool) *v13.Deployme
 										Command: []string{
 											"/bin/sh",
 											"-c",
-											"psql -h 127.0.0.1 -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c 'SELECT 1'",
+											"psql -h 127.0.0.1 -U $POSTGRES_USER -q -d $POSTGRES_DATABASE -c 'SELECT 1'",
 										},
 									},
 								},
@@ -97,7 +97,7 @@ func PostgresqlDeployment(cr *v1alpha1.Keycloak, isOpenshift bool) *v13.Deployme
 							},
 							Env: []v1.EnvVar{
 								{
-									Name: "POSTGRESQL_USER",
+									Name: "POSTGRES_USER",
 									ValueFrom: &v1.EnvVarSource{
 										SecretKeyRef: &v1.SecretKeySelector{
 											LocalObjectReference: v1.LocalObjectReference{
@@ -108,7 +108,7 @@ func PostgresqlDeployment(cr *v1alpha1.Keycloak, isOpenshift bool) *v13.Deployme
 									},
 								},
 								{
-									Name: "POSTGRESQL_PASSWORD",
+									Name: "POSTGRES_PASSWORD",
 									ValueFrom: &v1.EnvVarSource{
 										SecretKeyRef: &v1.SecretKeySelector{
 											LocalObjectReference: v1.LocalObjectReference{
@@ -119,7 +119,7 @@ func PostgresqlDeployment(cr *v1alpha1.Keycloak, isOpenshift bool) *v13.Deployme
 									},
 								},
 								{
-									Name:  "POSTGRESQL_DATABASE",
+									Name:  "POSTGRES_DATABASE",
 									Value: PostgresqlDatabase,
 								},
 							},
@@ -210,7 +210,7 @@ func PostgresqlDeploymentReconciled(cr *v1alpha1.Keycloak, currentState *v13.Dep
 						Command: []string{
 							"/bin/sh",
 							"-c",
-							"psql -h 127.0.0.1 -U $POSTGRESQL_USER -q -d $POSTGRESQL_DATABASE -c 'SELECT 1'",
+							"psql -h 127.0.0.1 -U $POSTGRES_USER -q -d $POSTGRES_DATABASE -c 'SELECT 1'",
 						},
 					},
 				},
@@ -226,7 +226,7 @@ func PostgresqlDeploymentReconciled(cr *v1alpha1.Keycloak, currentState *v13.Dep
 			},
 			Env: []v1.EnvVar{
 				{
-					Name: "POSTGRESQL_USER",
+					Name: "POSTGRES_USER",
 					ValueFrom: &v1.EnvVarSource{
 						SecretKeyRef: &v1.SecretKeySelector{
 							LocalObjectReference: v1.LocalObjectReference{
@@ -237,7 +237,7 @@ func PostgresqlDeploymentReconciled(cr *v1alpha1.Keycloak, currentState *v13.Dep
 					},
 				},
 				{
-					Name: "POSTGRESQL_PASSWORD",
+					Name: "POSTGRES_PASSWORD",
 					ValueFrom: &v1.EnvVarSource{
 						SecretKeyRef: &v1.SecretKeySelector{
 							LocalObjectReference: v1.LocalObjectReference{
@@ -248,7 +248,7 @@ func PostgresqlDeploymentReconciled(cr *v1alpha1.Keycloak, currentState *v13.Dep
 					},
 				},
 				{
-					Name:  "POSTGRESQL_DATABASE",
+					Name:  "POSTGRES_DATABASE",
 					Value: PostgresqlDatabase,
 				},
 			},
